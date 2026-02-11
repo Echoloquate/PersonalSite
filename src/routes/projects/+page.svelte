@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { siteConfig } from '$lib/data/site';
 	import { projects } from '$lib/data/projects';
 
@@ -15,14 +16,12 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Projects — {siteConfig.name}</title>
-</svelte:head>
+<SEO title="Projects" description="Browse {siteConfig.name}'s portfolio of web development projects." />
 
-<h1 class="mb-8 text-4xl font-bold">Projects</h1>
+<h1 class="mb-6 sm:mb-8 text-3xl sm:text-4xl font-bold">Projects</h1>
 
 <!-- Filter buttons -->
-<div class="mb-8 flex flex-wrap gap-2">
+<div class="mb-8 flex flex-wrap gap-1.5 sm:gap-2">
 	<button
 		onclick={() => (activeFilter = null)}
 		class="glass-button text-sm {activeFilter === null ? 'bg-white/20' : ''}"
@@ -43,7 +42,7 @@
 <div class="grid gap-6 md:grid-cols-2">
 	{#each filtered as project (project.slug)}
 		<GlassCard hover>
-			<h2 class="mb-2 text-xl font-semibold">{project.title}</h2>
+			<h2 class="mb-2 text-lg sm:text-xl font-semibold">{project.title}</h2>
 			<p class="mb-4 text-sm text-text-secondary">{project.description}</p>
 			<div class="mb-4 flex flex-wrap gap-2">
 				{#each project.tech as tag}

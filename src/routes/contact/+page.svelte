@@ -1,18 +1,17 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { siteConfig } from '$lib/data/site';
 </script>
 
-<svelte:head>
-	<title>Contact — {siteConfig.name}</title>
-</svelte:head>
+<SEO title="Contact" description="Get in touch — send a message or connect on social media." />
 
-<h1 class="mb-8 text-4xl font-bold">Contact</h1>
+<h1 class="mb-6 sm:mb-8 text-3xl sm:text-4xl font-bold">Contact</h1>
 
 <div class="grid gap-8 md:grid-cols-2">
 	<!-- Contact form -->
 	<GlassCard>
-		<h2 class="mb-4 text-xl font-semibold">Send a Message</h2>
+		<h2 class="mb-4 text-xl sm:text-2xl font-semibold">Send a Message</h2>
 		<form class="flex flex-col gap-4" method="POST">
 			<input type="text" name="name" placeholder="Your name" class="glass-input" required />
 			<input type="email" name="email" placeholder="Your email" class="glass-input" required />
@@ -24,7 +23,7 @@
 	<!-- Contact info -->
 	<div class="flex flex-col gap-6">
 		<GlassCard>
-			<h2 class="mb-4 text-xl font-semibold">Get in Touch</h2>
+			<h2 class="mb-4 text-xl sm:text-2xl font-semibold">Get in Touch</h2>
 			<p class="mb-4 text-sm text-text-secondary">
 				Prefer email? Reach me directly at
 				<a href="mailto:{siteConfig.email}" class="text-accent hover:text-accent-hover">{siteConfig.email}</a>.
@@ -43,7 +42,7 @@
 		</GlassCard>
 
 		<GlassCard>
-			<h2 class="mb-3 text-xl font-semibold">Availability</h2>
+			<h2 class="mb-3 text-xl sm:text-2xl font-semibold">Availability</h2>
 			{#if siteConfig.available}
 				<div class="flex items-center gap-2">
 					<span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>

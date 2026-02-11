@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { base } from '$app/paths';
 	import type { BlogPost } from '$lib/types';
 	import type { Component } from 'svelte';
@@ -8,16 +9,18 @@
 	let { data }: { data: { content: Component; metadata: Omit<BlogPost, 'slug'> } } = $props();
 </script>
 
-<svelte:head>
-	<title>{data.metadata.title}</title>
-	<meta name="description" content={data.metadata.description} />
-</svelte:head>
+<SEO
+	title={data.metadata.title}
+	description={data.metadata.description}
+	ogType="article"
+	article={{ publishedTime: data.metadata.date, tags: data.metadata.tags }}
+/>
 
 <article class="mx-auto max-w-3xl">
 	<!-- Post header -->
 	<header class="mb-8">
 		<a href="{base}/blog" class="mb-4 inline-block text-sm text-accent hover:text-accent-hover">&larr; Back to blog</a>
-		<h1 class="mb-3 text-4xl font-bold">{data.metadata.title}</h1>
+		<h1 class="mb-3 text-2xl sm:text-3xl md:text-4xl font-bold">{data.metadata.title}</h1>
 		<div class="flex items-center gap-4 text-sm text-text-muted">
 			<time datetime={data.metadata.date}>
 				{new Date(data.metadata.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}

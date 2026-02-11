@@ -1,14 +1,12 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
-	import { siteConfig } from '$lib/data/site';
+	import SEO from '$lib/components/SEO.svelte';
 	import { testimonials } from '$lib/data/testimonials';
 </script>
 
-<svelte:head>
-	<title>Testimonials — {siteConfig.name}</title>
-</svelte:head>
+<SEO title="Testimonials" description="What colleagues and clients say about working together." />
 
-<h1 class="mb-8 text-4xl font-bold">Testimonials</h1>
+<h1 class="mb-6 sm:mb-8 text-3xl sm:text-4xl font-bold">Testimonials</h1>
 
 <div class="grid gap-6 md:grid-cols-2">
 	{#each testimonials as testimonial}

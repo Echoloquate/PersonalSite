@@ -2,7 +2,7 @@
 	import { siteConfig } from '$lib/data/site';
 </script>
 
-<footer class="mt-20 border-t border-white/10 px-6 py-10 text-center text-sm text-text-secondary">
+<footer class="mt-12 sm:mt-20 border-t border-white/10 px-4 sm:px-6 py-8 sm:py-10 text-center text-sm text-text-secondary">
 	<div class="mx-auto flex max-w-xl flex-col items-center gap-4">
 		<div class="flex gap-5">
 			{#if siteConfig.social.github}

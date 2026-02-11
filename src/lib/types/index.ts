@@ -43,6 +43,8 @@ export interface SiteConfig {
 	title: string;
 	description: string;
 	email: string;
+	url: string;
+	ogImage: string;
 	social: {
 		github?: string;
 		linkedin?: string;

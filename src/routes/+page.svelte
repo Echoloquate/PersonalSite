@@ -1,30 +1,28 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { base } from '$app/paths';
 	import { siteConfig } from '$lib/data/site';
 	import { projects } from '$lib/data/projects';
 	import { skills } from '$lib/data/skills';
 </script>
 
-<svelte:head>
-	<title>{siteConfig.name} — {siteConfig.title}</title>
-	<meta name="description" content={siteConfig.description} />
-</svelte:head>
+<SEO />
 
 <!-- Hero section -->
-<section class="py-20 text-center">
-	<h1 class="mb-4 text-5xl font-bold tracking-tight">{siteConfig.name}</h1>
-	<p class="mb-2 text-xl text-text-secondary">{siteConfig.title}</p>
+<section class="py-12 sm:py-16 md:py-20 text-center">
+	<h1 class="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">{siteConfig.name}</h1>
+	<p class="mb-2 text-lg sm:text-xl text-text-secondary">{siteConfig.title}</p>
 	<p class="mx-auto mb-8 max-w-lg text-text-secondary">{siteConfig.description}</p>
-	<div class="flex justify-center gap-4">
+	<div class="flex flex-col sm:flex-row justify-center gap-4">
 		<a href="{base}/projects" class="glass-button inline-block font-medium">View Projects</a>
 		<a href="{base}/contact" class="glass-button inline-block font-medium">Get in Touch</a>
 	</div>
 </section>
 
 <!-- Featured Projects -->
-<section class="mb-16">
-	<h2 class="mb-6 text-2xl font-semibold">Featured Projects</h2>
+<section class="mb-10 sm:mb-16">
+	<h2 class="mb-6 text-xl sm:text-2xl font-semibold">Featured Projects</h2>
 	<div class="grid gap-6 md:grid-cols-2">
 		{#each projects.filter((p) => p.featured) as project}
 			<GlassCard hover>
@@ -41,8 +39,8 @@
 </section>
 
 <!-- Skills Overview -->
-<section class="mb-16">
-	<h2 class="mb-6 text-2xl font-semibold">Skills</h2>
+<section class="mb-10 sm:mb-16">
+	<h2 class="mb-6 text-xl sm:text-2xl font-semibold">Skills</h2>
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each skills as category}
 			<GlassCard>

@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { base } from '$app/paths';
 	import { siteConfig } from '$lib/data/site';
+	import { slide, fade } from 'svelte/transition';
 
 	const navLinks = [
 		{ href: '/', label: 'Home' },
@@ -19,7 +20,7 @@
 	let currentPath = $derived(page.url.pathname);
 </script>
 
-<nav class="glass-nav fixed top-4 left-1/2 z-50 -translate-x-1/2 px-2 py-2">
+<nav class="glass-nav fixed top-4 left-1/2 z-50 -translate-x-1/2 max-w-[calc(100vw-2rem)] px-2 py-2">
 	<!-- Desktop nav -->
 	<div class="hidden items-center gap-1 md:flex">
 		<a href="{base}/" class="px-3 py-1.5 font-semibold text-text-primary">
@@ -64,8 +65,11 @@
 
 <!-- Mobile dropdown menu -->
 {#if mobileOpen}
-	<div class="glass-medium fixed top-16 left-4 right-4 z-40 flex flex-col gap-1 p-3 md:hidden">
-		{#each navLinks as link}
+	<div
+		class="glass-medium fixed top-16 left-4 right-4 z-40 flex flex-col gap-1 p-3 md:hidden"
+		transition:slide={{ duration: 250 }}
+	>
+		{#each navLinks as link, i}
 			<a
 				href="{base}{link.href}"
 				onclick={() => (mobileOpen = false)}
@@ -73,6 +77,7 @@
 					{currentPath === base + link.href
 					? 'bg-white/15 text-text-primary'
 					: 'text-text-secondary hover:text-text-primary'}"
+				in:fade={{ delay: 30 * i, duration: 150 }}
 			>
 				{link.label}
 			</a>

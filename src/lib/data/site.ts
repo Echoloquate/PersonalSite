@@ -5,6 +5,9 @@ export const siteConfig: SiteConfig = {
 	title: 'Full-Stack Developer',
 	description: 'I build modern web applications with clean code and great user experiences.',
 	email: 'hello@example.com',
+	url: 'https://echoloquate.github.io/PersonalSite',
+	// Drop a 1200×630 PNG into static/ to replace the default
+	ogImage: '/og-image.png',
 	social: {
 		github: 'https://github.com/yourusername',
 		linkedin: 'https://linkedin.com/in/yourusername',

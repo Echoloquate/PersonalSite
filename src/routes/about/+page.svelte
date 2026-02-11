@@ -1,20 +1,19 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 	import { siteConfig } from '$lib/data/site';
 	import { skills } from '$lib/data/skills';
 </script>
 
-<svelte:head>
-	<title>About — {siteConfig.name}</title>
-</svelte:head>
+<SEO title="About" description="Learn more about {siteConfig.name} — background, tech stack, and career highlights." />
 
-<h1 class="mb-8 text-4xl font-bold">About Me</h1>
+<h1 class="mb-6 sm:mb-8 text-3xl sm:text-4xl font-bold">About Me</h1>
 
 <div class="grid gap-8 md:grid-cols-3">
 	<!-- Bio (spans 2 cols on desktop) -->
 	<div class="md:col-span-2">
 		<GlassCard>
-			<h2 class="mb-4 text-xl font-semibold">Bio</h2>
+			<h2 class="mb-4 text-xl sm:text-2xl font-semibold">Bio</h2>
 			<p class="mb-4 leading-relaxed text-text-secondary">
 				I'm a full-stack developer passionate about building clean, performant web applications.
 				With experience across frontend and backend technologies, I enjoy turning complex problems
@@ -30,7 +29,7 @@
 	<!-- Quick info sidebar -->
 	<div>
 		<GlassCard>
-			<h2 class="mb-4 text-xl font-semibold">Quick Info</h2>
+			<h2 class="mb-4 text-xl sm:text-2xl font-semibold">Quick Info</h2>
 			<ul class="space-y-2 text-sm text-text-secondary">
 				<li><span class="font-medium text-text-primary">Location:</span> Your City</li>
 				<li><span class="font-medium text-text-primary">Experience:</span> X+ years</li>
@@ -50,7 +49,7 @@
 
 <!-- Tech Stack -->
 <section class="mt-10">
-	<h2 class="mb-6 text-2xl font-semibold">Tech Stack</h2>
+	<h2 class="mb-6 text-xl sm:text-2xl font-semibold">Tech Stack</h2>
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each skills as category}
 			<GlassCard>
