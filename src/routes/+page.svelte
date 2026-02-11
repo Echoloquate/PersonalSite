@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import { base } from '$app/paths';
 	import { siteConfig } from '$lib/data/site';
 	import { projects } from '$lib/data/projects';
 	import { skills } from '$lib/data/skills';
@@ -16,8 +17,8 @@
 	<p class="mb-2 text-xl text-text-secondary">{siteConfig.title}</p>
 	<p class="mx-auto mb-8 max-w-lg text-text-secondary">{siteConfig.description}</p>
 	<div class="flex justify-center gap-4">
-		<a href="/projects" class="glass-button inline-block font-medium">View Projects</a>
-		<a href="/contact" class="glass-button inline-block font-medium">Get in Touch</a>
+		<a href="{base}/projects" class="glass-button inline-block font-medium">View Projects</a>
+		<a href="{base}/contact" class="glass-button inline-block font-medium">Get in Touch</a>
 	</div>
 </section>
 

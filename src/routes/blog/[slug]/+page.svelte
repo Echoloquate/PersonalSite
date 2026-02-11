@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import { base } from '$app/paths';
 	import type { BlogPost } from '$lib/types';
 	import type { Component } from 'svelte';
 
@@ -15,7 +16,7 @@
 <article class="mx-auto max-w-3xl">
 	<!-- Post header -->
 	<header class="mb-8">
-		<a href="/blog" class="mb-4 inline-block text-sm text-accent hover:text-accent-hover">&larr; Back to blog</a>
+		<a href="{base}/blog" class="mb-4 inline-block text-sm text-accent hover:text-accent-hover">&larr; Back to blog</a>
 		<h1 class="mb-3 text-4xl font-bold">{data.metadata.title}</h1>
 		<div class="flex items-center gap-4 text-sm text-text-muted">
 			<time datetime={data.metadata.date}>

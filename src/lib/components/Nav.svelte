@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { base } from '$app/paths';
 	import { siteConfig } from '$lib/data/site';
 
 	const navLinks = [
@@ -21,14 +22,14 @@
 <nav class="glass-nav fixed top-4 left-1/2 z-50 -translate-x-1/2 px-2 py-2">
 	<!-- Desktop nav -->
 	<div class="hidden items-center gap-1 md:flex">
-		<a href="/" class="px-3 py-1.5 font-semibold text-text-primary">
+		<a href="{base}/" class="px-3 py-1.5 font-semibold text-text-primary">
 			{siteConfig.name}
 		</a>
 		{#each navLinks as link}
 			<a
-				href={link.href}
+				href="{base}{link.href}"
 				class="rounded-full px-3 py-1.5 text-sm transition-colors
-					{currentPath === link.href
+					{currentPath === base + link.href
 					? 'bg-white/15 text-text-primary'
 					: 'text-text-secondary hover:text-text-primary'}"
 			>
@@ -39,7 +40,7 @@
 
 	<!-- Mobile nav toggle -->
 	<div class="flex items-center justify-between md:hidden">
-		<a href="/" class="px-3 py-1.5 font-semibold text-text-primary">
+		<a href="{base}/" class="px-3 py-1.5 font-semibold text-text-primary">
 			{siteConfig.name}
 		</a>
 		<button
@@ -66,10 +67,10 @@
 	<div class="glass-medium fixed top-16 left-4 right-4 z-40 flex flex-col gap-1 p-3 md:hidden">
 		{#each navLinks as link}
 			<a
-				href={link.href}
+				href="{base}{link.href}"
 				onclick={() => (mobileOpen = false)}
 				class="rounded-xl px-4 py-2.5 text-sm transition-colors
-					{currentPath === link.href
+					{currentPath === base + link.href
 					? 'bg-white/15 text-text-primary'
 					: 'text-text-secondary hover:text-text-primary'}"
 			>

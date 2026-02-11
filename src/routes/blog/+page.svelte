@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassCard from '$lib/components/GlassCard.svelte';
+	import { base } from '$app/paths';
 	import { siteConfig } from '$lib/data/site';
 	import type { BlogPost } from '$lib/types';
 
@@ -20,7 +21,7 @@
 {:else}
 	<div class="flex flex-col gap-6">
 		{#each data.posts as post}
-			<a href="/blog/{post.slug}" class="group">
+			<a href="{base}/blog/{post.slug}" class="group">
 				<GlassCard hover>
 					<div class="flex items-start justify-between gap-4">
 						<div>

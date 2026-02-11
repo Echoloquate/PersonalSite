@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
 import { createHighlighter } from 'shiki';
 
@@ -27,7 +27,13 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			fallback: '404.html'
+		}),
+		paths: {
+			// GitHub Pages serves from /PersonalSite/ — this prefix is needed for all links and assets
+			base: process.argv.includes('dev') ? '' : '/PersonalSite'
+		}
 	}
 };
 
