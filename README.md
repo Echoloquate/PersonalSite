@@ -58,6 +58,14 @@ With the scaffold functional, a third session focused on design polish and SEO i
 9. Committed and pushed to main.
 10. **Hook fix:** A `PreToolUse` hook for ensuring README updates before commits was erroring on Windows due to `$CLAUDE_PROJECT_DIR` not expanding. Fixed the path to use a relative path (`.claude/hooks/pre-commit-readme.mjs`).
 
+### Phase 4: Blog Posts & Root Path
+
+1. **Blog posts:** Wrote three example posts — "What I Learned Building My First SvelteKit Site" (SvelteKit/Svelte 5 lessons), "Agentic Coding: Lessons From Building Software With AI" (workflow best practices), and "Building Liquid Glass UI With Pure CSS" (deep dive into `backdrop-filter` and the site's design system).
+2. **Shiki config fix:** Added `markdown` to the loaded languages list in `svelte.config.js` and added a safe fallback so unknown languages default to `text` instead of crashing the build.
+3. **Template literal fix:** Avoided `${}` template literals in code blocks within markdown posts, as Svelte's compiler interprets them as expressions during mdsvex processing.
+4. **Root path migration:** Removed the `/PersonalSite` base path from `svelte.config.js` and updated `siteConfig.url` to `https://echoloquate.github.io` after the repo was renamed to serve from root.
+5. Committed and pushed to main.
+
 ---
 
 ## Pages

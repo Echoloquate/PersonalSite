@@ -5,7 +5,7 @@ import { createHighlighter } from 'shiki';
 // Create a Shiki highlighter instance (cached after first call)
 const highlighter = await createHighlighter({
 	themes: ['github-dark'],
-	langs: ['javascript', 'typescript', 'svelte', 'html', 'css', 'bash', 'json']
+	langs: ['javascript', 'typescript', 'svelte', 'html', 'css', 'bash', 'json', 'markdown']
 });
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -19,8 +19,10 @@ const config = {
 			extensions: ['.md'],
 			highlight: {
 				highlighter: (code, lang) => {
-					// Shiki returns HTML with inline styles for syntax colors
-					return `{@html \`${highlighter.codeToHtml(code, { lang: lang || 'text', theme: 'github-dark' })}\`}`;
+					// Fall back to 'text' for languages not loaded in the highlighter
+					const loaded = highlighter.getLoadedLanguages();
+					const safeLang = loaded.includes(lang ?? '') ? lang : 'text';
+					return `{@html \`${highlighter.codeToHtml(code, { lang: safeLang || 'text', theme: 'github-dark' })}\`}`;
 				}
 			}
 		})
@@ -31,8 +33,7 @@ const config = {
 			fallback: '404.html'
 		}),
 		paths: {
-			// GitHub Pages serves from /PersonalSite/ — this prefix is needed for all links and assets
-			base: process.argv.includes('dev') ? '' : '/PersonalSite'
+			base: ''
 		}
 	}
 };
