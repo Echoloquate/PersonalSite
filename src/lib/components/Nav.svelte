@@ -16,20 +16,38 @@
 	let mobileOpen = $state(false);
 	let currentPath = $derived(page.url.pathname);
 
-	// Hide nav when scrolling down, show when scrolling up
+	// Hide nav when scrolling down, show after sustained upward scroll
 	let hidden = $state(false);
 	let lastScrollY = $state(0);
+	let scrollDelta = $state(0); // accumulates scroll direction
 
-	// $effect runs a side effect and auto-cleans up on destroy
 	$effect(() => {
 		function onScroll() {
 			const y = window.scrollY;
-			if (y > lastScrollY && y > 60) {
+			const diff = y - lastScrollY;
+
+			// Always show nav near the top of the page
+			if (y < 60) {
+				hidden = false;
+				scrollDelta = 0;
+				lastScrollY = y;
+				return;
+			}
+
+			// Accumulate delta in the current direction, reset on direction change
+			if ((diff > 0 && scrollDelta < 0) || (diff < 0 && scrollDelta > 0)) {
+				scrollDelta = 0;
+			}
+			scrollDelta += diff;
+
+			// Require ~30px of sustained scroll before toggling
+			if (scrollDelta > 30) {
 				hidden = true;
 				mobileOpen = false;
-			} else {
+			} else if (scrollDelta < -30) {
 				hidden = false;
 			}
+
 			lastScrollY = y;
 		}
 

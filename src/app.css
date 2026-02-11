@@ -81,9 +81,9 @@ body {
 }
 
 .glass-nav {
-	background: rgba(255, 255, 255, 0.08);
-	backdrop-filter: blur(var(--blur-glass-nav));
-	-webkit-backdrop-filter: blur(var(--blur-glass-nav));
+	background: rgba(15, 15, 25, 0.6);
+	backdrop-filter: blur(32px);
+	-webkit-backdrop-filter: blur(32px);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 9999px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);

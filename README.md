@@ -70,7 +70,8 @@ With the scaffold functional, a third session focused on design polish and SEO i
 
 1. **Nav hide-on-scroll:** Added scroll-direction tracking to `Nav.svelte` using a `$effect` with a passive scroll listener. The nav slides up off-screen when scrolling down (past 60px threshold) and reappears when scrolling up, with a 300ms CSS transition. Mobile menu auto-closes when the nav hides.
 2. **Blog post rewrites:** Rewrote all four blog posts (`hello-world`, `agentic-coding-best-practices`, `liquid-glass-css`, `building-with-sveltekit`) to sound less AI-generated — more casual voice, fewer perfectly parallel structures, more first-person asides, trimmed filler sections.
-3. Committed and pushed to main.
+3. **Nav scroll refinement:** Added a 30px scroll-delta threshold so the nav doesn't flicker on small scroll changes. Increased `.glass-nav` background opacity (`rgba(15, 15, 25, 0.6)`) and blur (`32px`) so text doesn't bleed through the translucent panel.
+4. Committed and pushed to main.
 
 ---
 
