@@ -43,6 +43,21 @@ With the spec and `CLAUDE.md` in place, a second session handled the full scaffo
 11. **Verification:** Dev server started clean, all 7 routes returned HTTP 200, Shiki syntax highlighting confirmed in blog HTML, `npm run check` passed with 0 errors/0 warnings, `npm run build` succeeded.
 12. Committed and pushed to main.
 
+### Phase 3: Design Refinements — Transitions, Responsive, Favicon & OG Meta
+
+With the scaffold functional, a third session focused on design polish and SEO infrastructure:
+
+1. **Plan mode:** Claude reviewed all existing pages and components, then produced a 7-step implementation plan covering page transitions, responsive scaling, favicon, and Open Graph meta tags. The user approved it.
+2. **Types & site config:** Added `url` and `ogImage` fields to the `SiteConfig` interface and populated them in `site.ts` (GitHub Pages URL, placeholder OG image path).
+3. **Favicon:** Created a hand-coded SVG favicon matching the glass aesthetic — a dark gradient squircle with `</>` code brackets in accent blue. Removed the unused default Svelte logo from `src/lib/assets/`. Added `<meta name="theme-color">` and favicon `<link>` to `app.html`.
+4. **SEO component (`SEO.svelte`):** Built a reusable component rendering `<svelte:head>` with `<title>`, `<meta description>`, `<link rel="canonical">`, Open Graph tags (`og:title`, `og:description`, `og:url`, `og:image`, `og:type`, `og:site_name`), Twitter Card tags, and optional `article:published_time`/`article:tag` for blog posts. Props default from `siteConfig`.
+5. **All 7 pages updated:** Replaced inline `<svelte:head>` blocks with the `<SEO>` component and added mobile-first responsive Tailwind classes throughout — scaled headings (`text-3xl sm:text-4xl md:text-5xl`), responsive padding/margins, stacked CTA buttons on mobile (`flex-col sm:flex-row`), and blog card layout adjustments.
+6. **Component polish:** `GlassCard` got responsive padding (`p-4 sm:p-6`). `Nav` got `max-w-[calc(100vw-2rem)]` to prevent overflow on narrow viewports, plus `slide` and `fade` transitions on the mobile dropdown with staggered link entry. `Footer` got responsive spacing.
+7. **Page transitions:** Added `onNavigate` in `+layout.svelte` wrapping navigation with the View Transitions API (`document.startViewTransition()`) with graceful fallback for unsupported browsers. Added glass dissolve keyframes in `app.css` — `::view-transition-old(root)` fades out with `blur(4px)`, `::view-transition-new(root)` fades in from `blur(4px)`. Also added a `transition` shorthand to the `.glass` base class for smooth hover behavior.
+8. **Verification:** `svelte-check` passed with 0 errors, `npm run build` succeeded with static output.
+9. Committed and pushed to main.
+10. **Hook fix:** A `PreToolUse` hook for ensuring README updates before commits was erroring on Windows due to `$CLAUDE_PROJECT_DIR` not expanding. Fixed the path to use a relative path (`.claude/hooks/pre-commit-readme.mjs`).
+
 ---
 
 ## Pages

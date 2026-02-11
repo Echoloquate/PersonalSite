@@ -11,6 +11,7 @@ node_modules
 # OS
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # Env
 .env
@@ -21,3 +22,15 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+
+# Logs
+npm-debug.log*
+
+# Claude Code
+.claude/
